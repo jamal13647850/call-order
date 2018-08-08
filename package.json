@@ -4,6 +4,8 @@
   "description": "A special program for using in safirmall system",
   "main": "index.js",
   "scripts": {
+    "start": "electron .",
+    "rebuild": "electron-rebuild -f -w sqlite3",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
