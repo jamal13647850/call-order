@@ -1,0 +1,32 @@
+{
+  "name": "call-order",
+  "version": "1.0.0",
+  "description": "A special program for using in safirmall system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pgsavis/call-order.git"
+  },
+  "keywords": [
+    "call",
+    "order",
+    "safirmall"
+  ],
+  "author": "Sayyed Jamal Ghasemi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pgsavis/call-order/issues"
+  },
+  "homepage": "https://github.com/pgsavis/call-order#readme",
+  "dependencies": {
+    "electron": "^2.0.6",
+    "knex": "^0.15.2",
+    "sqlite3": "^4.0.2"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^1.8.2"
+  }
+}
