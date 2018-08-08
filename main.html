@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <title>ثبت سفارشات تلفنی سفیرمال</title>
     <script>
+        let knex = require("knex")({
+            client: "sqlite3",
+            connection: {
+                filename: "./ordersdb.db"
+            },
+            useNullAsDefault: true,
+            debug: true
+        });
         const electron = require("electron");
         const ipc = electron.ipcRenderer;
         document.addEventListener("DOMContentLoaded", function(){
@@ -15,6 +23,26 @@
                     resultEl.innerHTML += "First Name: " + result[i].fullname.toString() + "<br/>";
                 }
             });
+
+
+
+
+            let insert1={
+                fullname: 'Great Gatsby3',
+                idcode: '00556699883',
+                address: 'Great Gatsby3',
+                email: 'Great Gatsby3',
+                phone: 'Great Gatsby3',
+                products: 'Great Gatsby3',
+                cardnumber: 'Great Gatsby3',
+            };
+            knex.insert(insert1).into("orders").then(function (id) {
+                console.log(id);
+            })
+                .finally(function() {
+                    knex.destroy();
+                });
+
         });
     </script>
 </head>
