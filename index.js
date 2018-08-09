@@ -10,8 +10,21 @@ let knex = require("knex")({
 });
 
 
+/*require('electron-reload')(__dirname);*/
+
+let path = require('path')
+
 app.on("ready", () => {
-    let mainWindow = new BrowserWindow({ height: 800, width: 800, show: false });
+    require('devtron').install();
+
+    let mainWindow = new BrowserWindow(
+        {
+            height: 800,
+            width: 800,
+            show: false,
+            icon: path.join(__dirname, 'assets/favicon-1.ico')
+        }
+            );
     mainWindow.loadURL(`file://${__dirname}/main.html`);
     mainWindow.once("ready-to-show", () => { mainWindow.show() });
 

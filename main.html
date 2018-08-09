@@ -2,16 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ثبت سفارشات تلفنی سفیرمال</title>
+    <title>سامانه ثبت سفارشات تلفنی فروشگاه اینترنتی سفیرمال</title>
+    <link rel="stylesheet" type="text/css" href="./node_modules/foundation-sites/dist/css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="./node_modules/foundation-sites/dist/css/foundation-float.css">
+    <link rel="stylesheet" type="text/css" href="./node_modules/foundation-sites/dist/css/foundation-prototype.css">
+    <link rel="stylesheet" type="text/css" href="./node_modules/foundation-sites/dist/css/foundation-rtl.css">
+    <link rel="stylesheet" type="text/css" href="./assets/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon-1.ico">
+
+
+    <script>window.$ = window.jQuery = require('jquery');</script>
+
+    <link rel="stylesheet" type="text/css" href="./node_modules/jquery-form-validator/form-validator/theme-default.css">
+    <script src="./node_modules/jquery-form-validator/form-validator/jquery.form-validator.js"></script>
+
     <script>
-        let knex = require("knex")({
-            client: "sqlite3",
-            connection: {
-                filename: "./ordersdb.db"
-            },
-            useNullAsDefault: true,
-            debug: true
-        });
+
+
+
+
+
+    </script>
+
+
+    <script>
+
         const electron = require("electron");
         const ipc = electron.ipcRenderer;
         document.addEventListener("DOMContentLoaded", function(){
@@ -24,29 +39,64 @@
                 }
             });
 
-
-
-
-            let insert1={
-                fullname: 'Great Gatsby3',
-                idcode: '00556699883',
-                address: 'Great Gatsby3',
-                email: 'Great Gatsby3',
-                phone: 'Great Gatsby3',
-                products: 'Great Gatsby3',
-                cardnumber: 'Great Gatsby3',
-            };
-            knex.insert(insert1).into("orders").then(function (id) {
-                console.log(id);
-            })
-                .finally(function() {
-                    knex.destroy();
-                });
-
         });
     </script>
 </head>
-<body>
+<body lang="ar" dir="rtl">
+
+    <form id="addOrders">
+        <div class="grid-container">
+            <div class="grid-x grid-padding-x">
+                <div class="small-12 medium-4 large-4 cell">
+                    <label>نام و نام خانوادگی
+                        <input type="text" placeholder="نام و نام خانوادگی" tabindex="1" id="fullname"  data-validation="length" data-validation-length="min5"  data-validation-error-msg="مقدار ورودی نباید کمتر از 5 حرف باشد">
+                    </label>
+                </div>
+                <div class="small-12 medium-4 large-4 cell">
+                    <label>کد ملی
+                        <input type="text" placeholder="کد ملی" tabindex="2" id="idcode">
+                    </label>
+                </div>
+                <div class="small-12 medium-4 large-4 cell">
+                    <label>ایمیل
+                        <input type="email" placeholder="ایمیل" tabindex="3" id="email">
+                    </label>
+                </div>
+                <div class="small-12 medium-4 large-4 cell">
+                    <label>شماره تلفن
+                        <input type="text" placeholder="شماره تلفن" tabindex="4" id="phone">
+                    </label>
+                </div>
+                <div class="small-12 medium-4 large-4 cell">
+                    <label>شماره کارت
+                        <input type="text" placeholder="شماره کارت" tabindex="5" id="cardnumber">
+                    </label>
+                </div>
+                <div class="small-12 medium-12 large-12 cell">
+                    <label>آدرس
+                        <textarea placeholder="آدرس" tabindex="6" id="address"></textarea>
+                    </label>
+                </div>
+
+                <div class="small-12 medium-12 large-12 cell">
+                    <label>محصولات
+                        <textarea placeholder="محصولات" tabindex="7" id="products" data-validation="required" data-validation-error-msg="ورود محصول الزامیست"></textarea>
+                    </label>
+                </div>
+            </div>
+
+            <div class="grid-x">
+                <div class="small-12 medium-4 large-4 cell"></div>
+                <div class="small-12 medium-4 large-4 cell">
+                    <input type="submit" class="success button expanded" id="regOrder" tabindex="8" value="ثبت">
+                </div>
+                <div class="small-12 medium-4 large-4 cell"></div>
+            </div>
+        </div>
+    </form>
 <p id="result"></p>
+
+
+    <script src="./assets/script.js"></script>
 </body>
 </html>

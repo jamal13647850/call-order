@@ -25,10 +25,15 @@
   "homepage": "https://github.com/pgsavis/call-order#readme",
   "dependencies": {
     "electron": "^2.0.6",
+    "foundation-sites": "^6.5.0-rc.2",
+    "jquery": "^3.3.1",
+    "jquery-form-validator": "^2.3.77",
     "knex": "^0.15.2",
     "sqlite3": "^4.0.2"
   },
   "devDependencies": {
-    "electron-rebuild": "^1.8.2"
+    "devtron": "^1.4.0",
+    "electron-rebuild": "^1.8.2",
+    "electron-reload": "^1.2.5"
   }
 }
