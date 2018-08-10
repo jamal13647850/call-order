@@ -39,7 +39,11 @@ document.addEventListener("DOMContentLoaded", function(){
                     <td>${result[i].products.toString()}</td>
                     <td>${result[i].cardnumber.toString()}</td>
                     <td>${result[i].date.toString()}</td>
-                    <td></td>
+                    <td>
+                        <a href="#" class="removeOrder" data-id="${result[i].id.toString()}">
+                            <i class="fas fa-trash-alt" title="حذف"></i>
+                        </a>
+                    </td>
                 </tr>
             `);
 
@@ -54,12 +58,63 @@ swal = require('sweetalert');
 
 
 document.addEventListener("DOMContentLoaded", function(){
+
+    let knex = require("knex")({
+        client: "sqlite3",
+        connection: {
+            filename: "./ordersdb.db"
+        },
+        useNullAsDefault: true,
+        debug: false
+    });
+
     $.validate({
         lang: 'fa'
     });
     $( "#addOrders" ).submit(function( event ) {
         event.preventDefault();
         addOrder();
+    });
+
+    $(document).on( "click", ".removeOrder", function(event) {
+        event.preventDefault();
+
+
+        swal({
+            title: "حذف؟",
+            text: "آیا مطمئن هستید؟",
+            icon: "warning",
+            buttons: ["لغو", "تایید"],
+            dangerMode: true
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+
+                    let clicked = this;
+                    let id = $(clicked).data('id');
+                    knex('orders').where({ id: id }).del().then(function (dd) {
+                        swal("سفارش مورد نظر با موفقیت حذف شد", {
+                            icon: "success",
+                            button: "تایید"
+                        });
+                        $(clicked).parent().parent().remove();
+                    }).catch(function (error) {
+                        swal("مشکلی پیش آمده", {
+                            icon: "error",
+                            button: "تایید"
+                        });
+                    });
+
+
+
+                } else {
+
+                }
+            });
+
+
+
+
     });
 
 });
@@ -75,10 +130,24 @@ ipc.on('menu',(e,arg)=>{
     }
 });
 
+
+
+
+
+
+
+
+
+
+
+
 function VIEW_ORDERS(){
-    document.getElementById("result").style.display="block";
-    document.getElementById("addOrders").style.display="none";
-    ipc.send("listWindowLoaded",100);
+    if(document.getElementById("result").style.display==="none"){
+        document.getElementById("result").style.display="block";
+        document.getElementById("addOrders").style.display="none";
+        ipc.send("listWindowLoaded",100);
+    }
+
 }
 function REGISTER_ORDERS(){
     document.getElementById("result").style.display="none";
@@ -88,15 +157,15 @@ function REGISTER_ORDERS(){
 
 
 function addOrder(){
+
     let knex = require("knex")({
         client: "sqlite3",
         connection: {
             filename: "./ordersdb.db"
         },
         useNullAsDefault: true,
-        debug: true
+        debug: false
     });
-
     let insert1={
         fullname:   document.getElementById("fullname").value,
         idcode:     document.getElementById("idcode").value,

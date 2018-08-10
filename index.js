@@ -11,7 +11,7 @@ let knex = require("knex")({
 
 
 
-require('electron-reload')(__dirname);
+//require('electron-reload')(__dirname);
 
 let path = require('path');
 
@@ -66,7 +66,7 @@ menu.append(menuitem2)  ;
 
 
 app.on("ready", () => {
-    require('devtron').install();
+    //require('devtron').install();
 
     let mainWindow = new BrowserWindow(
         {
@@ -77,7 +77,37 @@ app.on("ready", () => {
         }
             );
     mainWindow.loadURL(`file://${__dirname}/template/main.html`);
-    mainWindow.once("ready-to-show", () => { mainWindow.show() });
+
+
+
+
+    let splashScreen = new BrowserWindow({
+        width:430,
+        height:250,
+        /*backgroundColor : '#d35400',*/
+        //parent: mainWin,
+        //transparent:true,
+        frame: false,
+        icon: path.join(__dirname, 'assets/favicon-1.ico')
+    });
+    splashScreen.loadURL(`file://${__dirname}/template/splashScreen.html`);
+    mainWindow.on('closed',()=>{
+        app.quit();
+        mainWindow =null;
+
+    });
+    mainWindow.on('closed',()=>{
+        splashScreen = null;
+    });
+
+
+    mainWindow.once('ready-to-show',()=>{
+        mainWindow.show();
+        splashScreen.close();
+    });
+
+
+
 
     ipcMain.on("listWindowLoaded", function (event,limit) {
         let result = knex.select().from("orders").orderBy('id', 'desc').limit(limit);

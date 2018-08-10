@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "electron -r babel-register .",
+    "build:win": "electron-packager . call-order --platform win32 --asar --overwrite --icon ./assets/favicon-1.ico --out ./build",
     "rebuild": "electron-rebuild -f -w sqlite3",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -37,6 +38,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.26.0",
     "devtron": "^1.4.0",
+    "electron-packager": "^12.1.0",
     "electron-rebuild": "^1.8.2",
     "electron-reload": "^1.2.5"
   }

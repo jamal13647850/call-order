@@ -1,3 +1,20 @@
+
+@font-face {
+    font-family: Yekan;
+    src: url('./Byekan.eot');
+    src: url('./Byekan.eot?#iefix') format('embedded-opentype'),
+    url('./Byekan.woff') format('woff'),
+    url('./Byekan.ttf') format('truetype');
+    font-weight: normal;
+}
+
+body{
+    font-family: Yekan, serif;
+}
 #addOrders{
     margin-top: 20px;
+}
+
+.fa-trash-alt{
+    color: red;
 }
