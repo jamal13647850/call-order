@@ -3,46 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>سامانه ثبت سفارشات تلفنی فروشگاه اینترنتی سفیرمال</title>
-    <link rel="stylesheet" type="text/css" href="./node_modules/foundation-sites/dist/css/foundation.css">
-    <link rel="stylesheet" type="text/css" href="./node_modules/foundation-sites/dist/css/foundation-float.css">
-    <link rel="stylesheet" type="text/css" href="./node_modules/foundation-sites/dist/css/foundation-prototype.css">
-    <link rel="stylesheet" type="text/css" href="./node_modules/foundation-sites/dist/css/foundation-rtl.css">
-    <link rel="stylesheet" type="text/css" href="./assets/style.css">
-    <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon-1.ico">
-
-
-    <script>window.$ = window.jQuery = require('jquery');</script>
-
-    <link rel="stylesheet" type="text/css" href="./node_modules/jquery-form-validator/form-validator/theme-default.css">
-    <script src="./node_modules/jquery-form-validator/form-validator/jquery.form-validator.js"></script>
-
-    <script>
-
-
-
-
-
-    </script>
-
-
-    <script>
-
-        const electron = require("electron");
-        const ipc = electron.ipcRenderer;
-        document.addEventListener("DOMContentLoaded", function(){
-            ipc.send("mainWindowLoaded");
-            ipc.on("resultSent", function(evt, result){
-                let resultEl = document.getElementById("result");
-                console.log(result);
-                for(let i = 0; i < result.length;i++){
-                    resultEl.innerHTML += "First Name: " + result[i].fullname.toString() + "<br/>";
-                }
-            });
-
-        });
-    </script>
+    <link rel="stylesheet" type="text/css" href="../node_modules/foundation-sites/dist/css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="../node_modules/foundation-sites/dist/css/foundation-float.css">
+    <link rel="stylesheet" type="text/css" href="../node_modules/foundation-sites/dist/css/foundation-prototype.css">
+    <link rel="stylesheet" type="text/css" href="../node_modules/foundation-sites/dist/css/foundation-rtl.css">
+    <link rel="stylesheet" type="text/css" href="../assets/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/favicon-1.ico">
+    <link rel="stylesheet" type="text/css" href="../node_modules/jquery-form-validator/form-validator/theme-default.css">
+    <script src="../node_modules/jquery-form-validator/form-validator/jquery.form-validator.js"></script>
+    <script src="../assets/render.js"></script>
 </head>
-<body lang="ar" dir="rtl">
+<body lang="fa" dir="rtl">
 
     <form id="addOrders">
         <div class="grid-container">
@@ -94,9 +65,11 @@
             </div>
         </div>
     </form>
-<p id="result"></p>
 
 
-    <script src="./assets/script.js"></script>
+
+    <div id="result">
+
+    </div>
 </body>
 </html>

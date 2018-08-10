@@ -4,7 +4,7 @@
   "description": "A special program for using in safirmall system",
   "main": "index.js",
   "scripts": {
-    "start": "electron .",
+    "start": "electron -r babel-register .",
     "rebuild": "electron-rebuild -f -w sqlite3",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,9 +29,13 @@
     "jquery": "^3.3.1",
     "jquery-form-validator": "^2.3.77",
     "knex": "^0.15.2",
-    "sqlite3": "^4.0.2"
+    "sqlite3": "^4.0.2",
+    "sweetalert": "^2.1.0"
   },
   "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.26.0",
     "devtron": "^1.4.0",
     "electron-rebuild": "^1.8.2",
     "electron-reload": "^1.2.5"
