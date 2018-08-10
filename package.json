@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "electron -r babel-register .",
-    "build:win": "electron-packager . call-order --platform win32 --asar --overwrite --icon ./assets/favicon-1.ico --out ./build",
+    "build:win64": "electron-packager . call-order --platform win32 --arch=x64 --asar --overwrite --icon ./assets/favicon-1.ico --out ./build",
+    "build:win32": "electron-packager . call-order --platform win32 --arch=ia32 --asar --overwrite --icon ./assets/favicon-1.ico --out ./build",
     "rebuild": "electron-rebuild -f -w sqlite3",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

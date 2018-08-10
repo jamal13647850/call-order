@@ -150,6 +150,7 @@ function VIEW_ORDERS(){
 
 }
 function REGISTER_ORDERS(){
+    $(result).empty();
     document.getElementById("result").style.display="none";
     document.getElementById("addOrders").style.display="block";
     ipc.send("registerWindowLoaded");

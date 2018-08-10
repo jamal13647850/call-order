@@ -47,8 +47,8 @@ let menuitem2 = new MenuItem(
     {
         label : 'نمایش',
         submenu : [
-            { role : 'reload'},
-            { role : 'toggledevtools'},
+            /*{ role : 'reload'},
+            { role : 'toggledevtools'},*/
             {
                 label : 'نمایش لیست محصولات',
                 click(menuItem , browserWindow , event) {
